@@ -4,10 +4,10 @@
 	<head>
 		<meta charset="utf-8">
 
-		<title>reveal.js - The HTML Presentation Framework</title>
+		<title>ECMAScript6</title>
 
-		<meta name="description" content="A framework for easily creating beautiful presentations using HTML">
-		<meta name="author" content="Hakim El Hattab">
+		<meta name="description" content="es6">
+		<meta name="author" content="pdw">
 
 		<meta name="apple-mobile-web-app-capable" content="yes" />
 		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
@@ -37,346 +37,713 @@
 	<body>
 
 		<div class="reveal">
-
-			<!-- Any section element inside of this container is displayed as a slide -->
 			<div class="slides">
-				<section>
-					<h1>Reveal.js</h1>
-					<h3>The HTML Presentation Framework</h3>
-					<p>
-						<small>Created by <a href="http://hakim.se">Hakim El Hattab</a> / <a href="http://twitter.com/hakimel">@hakimel</a></small>
-					</p>
-				</section>
+<section data-transition="slide"  data-background="#b5533c" data-background-transition="zoom">
+<h2>ECMAScrpt6</h2>
+<p>pdw</p>
+</section>
 
-				<section>
-					<h2>Hello There</h2>
-					<p>
-						reveal.js enables you to create beautiful interactive slide decks using HTML. This presentation will show you examples of what it can do.
-					</p>
-				</section>
+<section data-transition="slide" data-background="#000000" data-background-transition="zoom">
+<h2>목차</h2>
+<ul>
+<li>ECMAScript6란?</li>
+<li>ECMAScript6의 새로운 문법</li>
+<li>Babel.js을 이용한 ECMAScript6의 실무 적용</li>
+<li>Webpack</li>
+<li>browserify</li>
+<li>gulp + webpack</li>
+<li>gulp + browserify</li>
+</ul>
+</section>
 
-				<!-- Example of nested vertical slides -->
-				<section>
-					<section>
-						<h2>Vertical Slides</h2>
-						<p>Slides can be nested inside of each other.</p>
-						<p>Use the <em>Space</em> key to navigate through all slides.</p>
-						<br>
-						<a href="#" class="navigate-down">
-							<img width="178" height="238" data-src="https://s3.amazonaws.com/hakim-static/reveal-js/arrow.png" alt="Down arrow">
-						</a>
-					</section>
-					<section>
-						<h2>Basement Level 1</h2>
-						<p>Nested slides are useful for adding additional detail underneath a high level horizontal slide.</p>
-					</section>
-					<section>
-						<h2>Basement Level 2</h2>
-						<p>That's it, time to go back up.</p>
-						<br>
-						<a href="#/2">
-							<img width="178" height="238" data-src="https://s3.amazonaws.com/hakim-static/reveal-js/arrow.png" alt="Up arrow" style="transform: rotate(180deg); -webkit-transform: rotate(180deg);">
-						</a>
-					</section>
-				</section>
+<section data-transition="slide" data-background="#b5533c" data-background-transition="zoom">
+<h2>ECMAScrpt6란?</h2>
+<ul>
+<li>JavaScript 언어의 새로운 에디션(2015년 6월)</li>
+<li>2009년 ECMAScript5 발표 후 새로운 에디션을 발표</li>
+<li>다른 language에서 검증된 새로운 요소들을 추가</li>
+<li>하위 호환됨(ES5)</li>
+</ul>
+</section>
 
-				<section>
-					<h2>Slides</h2>
-					<p>
-						Not a coder? Not a problem. There's a fully-featured visual editor for authoring these, try it out at <a href="http://slides.com" target="_blank">http://slides.com</a>.
-					</p>
-				</section>
+<section data-transition="slide" data-background="#4d7e65" data-background-transition="zoom">
+<h2>ES6의 새로운 요소</h2>
+</section>
 
-				<section>
-					<h2>Point of View</h2>
-					<p>
-						Press <strong>ESC</strong> to enter the slide overview.
-					</p>
-					<p>
-						Hold down alt and click on any element to zoom in on it using <a href="http://lab.hakim.se/zoom-js">zoom.js</a>. Alt + click anywhere to zoom back out.
-					</p>
-				</section>
+<section data-transition="slide" data-background="#b5533c" data-background-transition="zoom">
+<h2>ES6의 새로운 요소 - let</h2>
+<div style="width:50%;float:left;"><pre><code class="hljs" data-trim contenteditable>
+//ES5
+{
+	var version = 1.8;
+	console.log( version ); //1.8
+}
 
-				<section>
-					<h2>Touch Optimized</h2>
-					<p>
-						Presentations look great on touch devices, like mobile phones and tablets. Simply swipe through your slides.
-					</p>
-				</section>
+console.log( version ); //1.8
 
-				<section data-markdown>
-					<script type="text/template">
-						## Markdown support
+console.log( tmp );
+</code></pre></div>
 
-						Write content using inline or external Markdown.
-						Instructions and more info available in the [readme](https://github.com/hakimel/reveal.js#markdown).
+<div style="width:50%;float:left;"><pre><code class="hljs" data-trim contenteditable>
+//ES6
 
-						```
-						<section data-markdown>
-						  ## Markdown support
+{
+	let version = 1.8;
+	console.log( version ); //1.8
+}
 
-						  Write content using inline or external Markdown.
-						  Instructions and more info available in the [readme](https://github.com/hakimel/reveal.js#markdown).
-						</section>
-						```
-					</script>
-				</section>
+console.log( version );
+//version is not defined
 
-				<section>
-					<section id="fragments">
-						<h2>Fragments</h2>
-						<p>Hit the next arrow...</p>
-						<p class="fragment">... to step through ...</p>
-						<p><span class="fragment">... a</span> <span class="fragment">fragmented</span> <span class="fragment">slide.</span></p>
+</code></pre></div>
 
-						<aside class="notes">
-							This slide has fragments which are also stepped through in the notes window.
-						</aside>
-					</section>
-					<section>
-						<h2>Fragment Styles</h2>
-						<p>There's different types of fragments, like:</p>
-						<p class="fragment grow">grow</p>
-						<p class="fragment shrink">shrink</p>
-						<p class="fragment fade-out">fade-out</p>
-						<p class="fragment current-visible">current-visible</p>
-						<p class="fragment highlight-red">highlight-red</p>
-						<p class="fragment highlight-blue">highlight-blue</p>
-					</section>
-				</section>
+</section>
 
-				<section id="transitions">
-					<h2>Transition Styles</h2>
-					<p>
-						You can select from different transitions, like: <br>
-						<a href="?transition=none#/transitions">None</a> -
-						<a href="?transition=fade#/transitions">Fade</a> -
-						<a href="?transition=slide#/transitions">Slide</a> -
-						<a href="?transition=convex#/transitions">Convex</a> -
-						<a href="?transition=concave#/transitions">Concave</a> -
-						<a href="?transition=zoom#/transitions">Zoom</a>
-					</p>
-				</section>
 
-				<section id="themes">
-					<h2>Themes</h2>
-					<p>
-						reveal.js comes with a few themes built in: <br>
-						<!-- Hacks to swap themes after the page has loaded. Not flexible and only intended for the reveal.js demo deck. -->
-						<a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/black.css'); return false;">Black (default)</a> -
-						<a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/white.css'); return false;">White</a> -
-						<a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/league.css'); return false;">League</a> -
-						<a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/sky.css'); return false;">Sky</a> -
-						<a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/beige.css'); return false;">Beige</a> -
-						<a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/simple.css'); return false;">Simple</a> <br>
-						<a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/serif.css'); return false;">Serif</a> -
-						<a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/blood.css'); return false;">Blood</a> -
-						<a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/night.css'); return false;">Night</a> -
-						<a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/moon.css'); return false;">Moon</a> -
-						<a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/solarized.css'); return false;">Solarized</a>
-					</p>
-				</section>
+<section data-transition="slide" data-background="#4d7e65" data-background-transition="zoom">
+<h2>ES6의 새로운 요소 - const</h2>
+<pre><code class="hljs" data-trim contenteditable>
+//ES6
+const version = 1.0;
 
-				<section>
-					<section data-background="#dddddd">
-						<h2>Slide Backgrounds</h2>
-						<p>
-							Set <code>data-background="#dddddd"</code> on a slide to change the background color. All CSS color formats are supported.
-						</p>
-						<a href="#" class="navigate-down">
-							<img width="178" height="238" data-src="https://s3.amazonaws.com/hakim-static/reveal-js/arrow.png" alt="Down arrow">
-						</a>
-					</section>
-					<section data-background="https://s3.amazonaws.com/hakim-static/reveal-js/image-placeholder.png">
-						<h2>Image Backgrounds</h2>
-						<pre><code class="hljs">&lt;section data-background="image.png"&gt;</code></pre>
-					</section>
-					<section data-background="https://s3.amazonaws.com/hakim-static/reveal-js/image-placeholder.png" data-background-repeat="repeat" data-background-size="100px">
-						<h2>Tiled Backgrounds</h2>
-						<pre><code class="hljs" style="word-wrap: break-word;">&lt;section data-background="image.png" data-background-repeat="repeat" data-background-size="100px"&gt;</code></pre>
-					</section>
-					<section data-background-video="https://s3.amazonaws.com/static.slid.es/site/homepage/v1/homepage-video-editor.mp4,https://s3.amazonaws.com/static.slid.es/site/homepage/v1/homepage-video-editor.webm" data-background-color="#000000">
-						<div style="background-color: rgba(0, 0, 0, 0.9); color: #fff; padding: 20px;">
-							<h2>Video Backgrounds</h2>
-							<pre><code class="hljs" style="word-wrap: break-word;">&lt;section data-background-video="video.mp4,video.webm"&gt;</code></pre>
-						</div>
-					</section>
-					<section data-background="http://i.giphy.com/90F8aUepslB84.gif">
-						<h2>... and GIFs!</h2>
-					</section>
-				</section>
+version = 1.5
+//syntaxError 'version' is read-only
 
-				<section data-transition="slide" data-background="#4d7e65" data-background-transition="zoom">
-					<h2>Background Transitions</h2>
-					<p>
-						Different background transitions are available via the backgroundTransition option. This one's called "zoom".
-					</p>
-					<pre><code class="hljs">Reveal.configure({ backgroundTransition: 'zoom' })</code></pre>
-				</section>
+var version = 1.5;
+//syntaxError ‘Duplicate declaration 'version'
+</code></pre>
+</section>
 
-				<section data-transition="slide" data-background="#b5533c" data-background-transition="zoom">
-					<h2>Background Transitions</h2>
-					<p>
-						You can override background transitions per-slide.
-					</p>
-					<pre><code class="hljs" style="word-wrap: break-word;">&lt;section data-background-transition="zoom"&gt;</code></pre>
-				</section>
+<section data-transition="slide" data-background="#b5533c" data-background-transition="zoom">
+<h2>ES6의 새로운 요소 - default arguments</h2>
+<div style="width:50%;float:left;"><pre><code class="hljs" data-trim contenteditable>
+//ES5
+function sum( a, b ){
+	b = b || 30;
+	return a + b;
+}
 
-				<section>
-					<h2>Pretty Code</h2>
-					<pre><code class="hljs" data-trim contenteditable>
-function linkify( selector ) {
-  if( supports3DTransforms ) {
+sum( 20 ); //50
 
-    var nodes = document.querySelectorAll( selector );
+</code></pre></div>
 
-    for( var i = 0, len = nodes.length; i &lt; len; i++ ) {
-      var node = nodes[i];
+<div style="width:50%;float:left;"><pre><code class="hljs" data-trim contenteditable>
+//ES6
+function sum( a, b = 30 ){
+	return a + b;
+}
 
-      if( !node.className ) {
-        node.className += ' roll';
-      }
+sum( 20 ); //50
+
+</code></pre></div>
+</section>
+
+<section data-transition="slide" data-background="#4d7e65" data-background-transition="zoom">
+<h2>ES6의 새로운 요소 - rest arguments</h2>
+<pre><code class="hljs" data-trim contenteditable>
+//ES6
+function sum( a, b, ...nums ){
+	let sumAll = a + b;
+	for( let i = 0, len = nums.length; i < len; i++){
+		sumAll += nums[ i ];
+	};
+
+	return sumAll;
+}
+
+sum( 5, 10, 15, 20, 25 ); //75
+
+</code></pre>
+</section>
+
+
+<section data-transition="slide" data-background="#b5533c" data-background-transition="zoom">
+<h2>ES6의 새로운 요소 - module</h2>
+<pre><code class="hljs" data-trim contenteditable>
+//ES6
+import util from 'js/external.js';
+
+console.log( util.multi( 4, 5 ) );
+
+//js/external.js
+export function multi( x, y ){
+	return x * y;
+};
+
+</code></pre>
+</section>
+
+
+<section data-transition="slide" data-background="#4d7e65" data-background-transition="zoom">
+<h2>ES6의 새로운 요소 - template</h2>
+<pre><code class="hljs" data-trim contenteditable>
+//ES6
+let name = 'Bob';
+let time = 'today';
+
+let string = `Hello ${name}, how are you ${time}`;
+//Hello Bob, how are you today
+
+</code></pre>
+</section>
+
+
+
+
+<section data-transition="slide" data-background="#b5533c" data-background-transition="zoom">
+<h2>ES6의 새로운 요소 - class</h2>
+<div style="width:50%;float:left;"><pre><code class="hljs" data-trim contenteditable>
+//ES5
+function User(name){
+  this._name = name;
+}
+
+User.prototype = Object.create(null,
+	{
+  constructor: {
+    value: User
+  },
+
+  say: {
+    value: function() {
+      return 'name: ' + this._name;
     }
   }
+});
+
+var user = new User('Alice');
+console.log(user.say());
+
+</code></pre></div>
+
+<div style="width:50%;float:left;"><pre><code class="hljs" data-trim contenteditable>
+//ES6
+class User {
+  constructor(name) {
+    this._name = name;
+  }
+
+  say() {
+    return 'name: ' + this._name;
+  }
 }
-					</code></pre>
-					<p>Code syntax highlighting courtesy of <a href="http://softwaremaniacs.org/soft/highlight/en/description/">highlight.js</a>.</p>
-				</section>
 
-				<section>
-					<h2>Marvelous List</h2>
-					<ul>
-						<li>No order here</li>
-						<li>Or here</li>
-						<li>Or here</li>
-						<li>Or here</li>
-					</ul>
-				</section>
+var user = new User('Alice');
+console.log(user.say());
 
-				<section>
-					<h2>Fantastic Ordered List</h2>
-					<ol>
-						<li>One is smaller than...</li>
-						<li>Two is smaller than...</li>
-						<li>Three!</li>
-					</ol>
-				</section>
+</code></pre></div>
+</section>
 
-				<section>
-					<h2>Tabular Tables</h2>
-					<table>
-						<thead>
-							<tr>
-								<th>Item</th>
-								<th>Value</th>
-								<th>Quantity</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr>
-								<td>Apples</td>
-								<td>$1</td>
-								<td>7</td>
-							</tr>
-							<tr>
-								<td>Lemonade</td>
-								<td>$2</td>
-								<td>18</td>
-							</tr>
-							<tr>
-								<td>Bread</td>
-								<td>$3</td>
-								<td>2</td>
-							</tr>
-						</tbody>
-					</table>
-				</section>
+<section data-transition="slide" data-background="#4d7e65" data-background-transition="zoom">
+<h2>ES6의 새로운 요소 - class 상속</h2>
+<div style="width:50%;float:left;"><pre><code class="hljs" data-trim contenteditable>
+//ES5
+function Admin(name) {
+  User.apply(this, arguments);
+}
 
-				<section>
-					<h2>Clever Quotes</h2>
-					<p>
-						These guys come in two forms, inline: <q cite="http://searchservervirtualization.techtarget.com/definition/Our-Favorite-Technology-Quotations">
-						&ldquo;The nice thing about standards is that there are so many to choose from&rdquo;</q> and block:
-					</p>
-					<blockquote cite="http://searchservervirtualization.techtarget.com/definition/Our-Favorite-Technology-Quotations">
-						&ldquo;For years there has been a theory that millions of monkeys typing at random on millions of typewriters would
-						reproduce the entire works of Shakespeare. The Internet has proven this theory to be untrue.&rdquo;
-					</blockquote>
-				</section>
+Admin.prototype = Object.create(User.prototype, {
+  constructor: {
+    value: Admin
+  },
 
-				<section>
-					<h2>Intergalactic Interconnections</h2>
-					<p>
-						You can link between slides internally,
-						<a href="#/2/3">like this</a>.
-					</p>
-				</section>
+  say: {
+    value: function() {
+      var superClassPrototype =  Object.getPrototypeOf(this.constructor.prototype);
+      return 'name: ' + superClassPrototype.say.call(this);
+    }
+  }
+});
+</code></pre></div>
 
-				<section>
-					<h2>Speaker View</h2>
-					<p>There's a <a href="https://github.com/hakimel/reveal.js#speaker-notes">speaker view</a>. It includes a timer, preview of the upcoming slide as well as your speaker notes.</p>
-					<p>Press the <em>S</em> key to try it out.</p>
+<div style="width:50%;float:left;"><pre><code class="hljs" data-trim contenteditable>
+//ES6
+class Admin extends User {
+  say() {
+    return 'name: ' + super.say();
+  }
+}
+</code></pre></div>
+</section>
 
-					<aside class="notes">
-						Oh hey, these are some notes. They'll be hidden in your presentation, but you can see them if you open the speaker notes window (hit 's' on your keyboard).
-					</aside>
-				</section>
 
-				<section>
-					<h2>Export to PDF</h2>
-					<p>Presentations can be <a href="https://github.com/hakimel/reveal.js#pdf-export">exported to PDF</a>, here's an example:</p>
-					<iframe src="https://www.slideshare.net/slideshow/embed_code/42840540" width="445" height="355" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:3px solid #666; margin-bottom:5px; max-width: 100%;" allowfullscreen> </iframe>
-				</section>
 
-				<section>
-					<h2>Global State</h2>
-					<p>
-						Set <code>data-state="something"</code> on a slide and <code>"something"</code>
-						will be added as a class to the document element when the slide is open. This lets you
-						apply broader style changes, like switching the page background.
-					</p>
-				</section>
 
-				<section data-state="customevent">
-					<h2>State Events</h2>
-					<p>
-						Additionally custom events can be triggered on a per slide basis by binding to the <code>data-state</code> name.
-					</p>
-					<pre><code class="javascript" data-trim contenteditable style="font-size: 18px;">
-Reveal.addEventListener( 'customevent', function() {
-	console.log( '"customevent" has fired' );
-} );
-					</code></pre>
-				</section>
 
-				<section>
-					<h2>Take a Moment</h2>
-					<p>
-						Press B or . on your keyboard to pause the presentation. This is helpful when you're on stage and want to take distracting slides off the screen.
-					</p>
-				</section>
+<section data-transition="slide" data-background="#b5533c" data-background-transition="zoom">
+<h2>ES6의 새로운 요소 - arrow function</h2>
+<div style="width:50%;float:left;"><pre><code class="hljs" data-trim contenteditable>
+//ES5
+function sum( a, b ){
+	return a + b;
+};
 
-				<section>
-					<h2>Much more</h2>
-					<ul>
-						<li>Right-to-left support</li>
-						<li><a href="https://github.com/hakimel/reveal.js#api">Extensive JavaScript API</a></li>
-						<li><a href="https://github.com/hakimel/reveal.js#auto-sliding">Auto-progression</a></li>
-						<li><a href="https://github.com/hakimel/reveal.js#parallax-background">Parallax backgrounds</a></li>
-						<li><a href="https://github.com/hakimel/reveal.js#keyboard-bindings">Custom keyboard bindings</a></li>
-					</ul>
-				</section>
+sum( 10, 20 );
+</code></pre></div>
 
-				<section style="text-align: left;">
-					<h1>THE END</h1>
-					<p>
-						- <a href="http://slides.com">Try the online editor</a> <br>
-						- <a href="https://github.com/hakimel/reveal.js">Source code &amp; documentation</a>
-					</p>
-				</section>
+<div style="width:50%;float:left;"><pre><code class="hljs" data-trim contenteditable>
+//ES6
+var sum = ( a, b ) => a + b;
 
+sum( 10, 20 );
+</code></pre></div>
+</section>
+
+
+
+
+
+<section data-transition="slide" data-background="#4d7e65" data-background-transition="zoom">
+<h2>ES6의 새로운 요소 - arrow function( this )</h2>
+<div style="width:50%;float:left;"><pre><code class="hljs" data-trim contenteditable>
+//ES5
+
+var count ={
+ count: 0,
+ addEvent: function(){
+  var $node = $( 'a' ).get( 0 );
+
+  $node.on('click', function(evt){
+   this.count++;
+  }.bind(this));
+ }
+}
+</code></pre></div>
+
+<div style="width:50%;float:left;"><pre><code class="hljs" data-trim contenteditable>
+//ES6
+
+var count ={
+ count: 0,
+ addEvent: function(){
+   var $node = $( 'a' ).get( 0 );
+
+   $node.on('click', ( evt ) => {
+    this.count++;
+   });
+ }
+}
+</code></pre></div>
+</section>
+
+<section data-transition="slide" data-background="#b5533c" data-background-transition="zoom">
+<h2>ES6의 새로운 요소 - for of</h2>
+<div style="width:50%;float:left;"><pre><code class="hljs" data-trim contenteditable>
+//ES5
+var arr = [ 1, 2, 3, 4, 5, 6 ];
+
+//첫번째 방법
+for( var i = 0, len = arr.length; len > i; i++){
+ console.log (x);
+}
+
+//두번째 방법
+arr.forEach(function( x ){
+ console.log (x);
+});
+
+//세번째 방법
+for( let x in arr ){
+ console.log (arr[ x ]);
+}
+
+sum( 10, 20 );
+</code></pre></div>
+
+<div style="width:50%;float:left;"><pre><code class="hljs" data-trim contenteditable>
+//ES6
+var arr = [ 1, 2, 3, 4, 5, 6 ];
+for( let x of arr ){
+	console.log (x);
+}
+
+</code></pre></div>
+</section>
+
+
+<section data-transition="slide" data-background="#4d7e65" data-background-transition="zoom">
+<h2>ES6의 새로운 요소 - Generator</h2>
+<pre><code class="hljs" data-trim contenteditable>
+//ES6
+
+'use strict';
+
+function* gen() {
+  yield '1번';
+	yield '2번';
+	yield '3번';
+	yield '4번';
+}
+
+var generator = gen();
+generator.next(); //1번
+generator.next(); //2번
+generator.next(); //3번
+generator.next(); //4번
+</code></pre>
+</section>
+
+<section data-transition="slide" data-background="#b5533c" data-background-transition="zoom">
+<h2>ES6의 새로운 요소 - Generator</h2>
+<pre><code class="hljs" data-trim contenteditable>
+//ES6
+
+'use strict';
+
+function* gen() {
+ for (var i = 0; i < 10; i++) {
+  yield i * 2;
+ }
+}
+
+var generator = gen();
+generator.next();
+generator.next();
+</code></pre>
+</section>
+
+<section>
+<h2>ES6의 새로운 요소 - list matching</h2>
+<pre><code class="hljs" data-trim contenteditable>
+//ES6
+
+let [ a, b, c ] = [ 1, 2, 3 ];
+console.log( a + b + c); //6
+</code></pre>
+</section>
+
+
+<section data-transition="slide" data-background="#4d7e65" data-background-transition="zoom">
+<h2>ES6의 새로운 요소 - Set, Map</h2>
+<pre><code class="hljs" data-trim contenteditable>
+//ES6
+
+var s = new Set();
+s.add( 'one' );
+s.add( 'two' );
+s.add( '3' );
+s.delete( '3' );
+console.log( s );
+
+var m = new Map();
+m.set( 'age', 10 );
+console.log( m.get( 'age' ) ); //10
+</code></pre>
+</section>
+
+
+
+
+<section data-transition="slide" data-background="#b5533c" data-background-transition="zoom">
+<h2>ES6의 브라우저 별 지원 현황</h2>
+<p><img src="./imgs/es6.png" height="300" /></p>
+<p><a href="http://kangax.github.io/compat-table/es6/" target="_blank">http://kangax.github.io/compat-table/es6/</a></p>
+</section>
+
+
+
+
+<section data-transition="slide" data-background="#4d7e65" data-background-transition="zoom">
+<h2>Babel.js을 이용한 ECMAScript6의 실무 적용</h2>
+</section>
+
+
+
+
+<section data-transition="slide" data-background="#000000" data-background-transition="zoom">
+<h2>Babel.js는?</h2>
+<p><img src="./imgs/babel-logo.png" width="200" style="border: 0px"/></p>
+<p>ES6 문법으로 작성된 파일을 <br/>ES5로 변환-컴파일하는 transform compiler</p>
+<p><a href="https://babeljs.io/" target="_blank">https://babeljs.io/</a></p>
+</section>
+
+
+
+
+<section data-transition="slide" data-background="#b5533c" data-background-transition="zoom">
+<h2>Babel.js는? - 컴파일 리스트</h2>
+<p><img src="./imgs/babel.png" /></p>
+</section>
+
+
+
+
+<section data-transition="slide" data-background="#4d7e65" data-background-transition="zoom">
+<h2>Babel.js 설치</h2>
+<pre><code class="hljs" data-trim contenteditable>
+$ npm install --global babel
+</code></pre>
+</section>
+
+
+
+
+
+<section data-transition="slide" data-background="#b5533c" data-background-transition="zoom">
+<h2>Babel.js 실행</h2>
+
+<pre><code class="hljs" data-trim contenteditable>
+$ babel Polygon.js --out-file compiled.js
+</code></pre>
+
+<div style="width:50%;float:left;"><pre><code class="hljs" data-trim contenteditable>
+//Polygon.js
+class Polygon {
+  constructor(height, width) {
+    this.height = height;
+    this.width = width;
+  }
+
+  get area() {
+    return this.calcArea()
+  }
+
+  calcArea() {
+    return this.height * this.width;
+  }
+}
+
+var polygon = new Polygon( 30, 40 );
+console.log( polygon.calcArea() );
+</code></pre></div>
+
+<div style="width:50%;float:left;"><pre><code class="hljs" data-trim contenteditable>
+//compiled.js
+var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
+
+var Polygon = (function () {
+  function Polygon(height, width) {
+    _classCallCheck(this, Polygon);
+
+    this.height = height;
+    this.width = width;
+  }
+
+  _createClass(Polygon, [{
+    key: 'calcArea',
+    value: function calcArea() {
+      return this.height * this.width;
+    }
+  }, {
+    key: 'area',
+    get: function get() {
+      return this.calcArea();
+    }
+  }]);
+
+  return Polygon;
+})();
+</code></pre></div>
+</section>
+
+
+
+
+<section data-transition="slide" data-background="#4d7e65" data-background-transition="zoom">
+<h2>Babel.js 실행</h2>
+
+<pre><code class="hljs" data-trim contenteditable>
+$ babel ./src --out-file compiled.js
+</code></pre>
+
+<pre><code class="hljs" data-trim contenteditable>
+$ babel ./src/js/ --watch compiled.js
+</code></pre>
+
+<p><a href="https://babeljs.io/docs/usage/options/" target="_blank">https://babeljs.io/docs/usage/options/</a></p>
+</section>
+
+
+
+
+
+<section data-transition="slide" data-background="#b5533c" data-background-transition="zoom">
+<h2>Babel.js의 브라우저 지원</h2>
+<p><img src="./imgs/babel2.png" height="300" /></p>
+<p><a href="http://kangax.github.io/compat-table/es6/" target="_blank">http://kangax.github.io/compat-table/es6/</a></p>
+</section>
+
+
+
+
+
+<section data-transition="slide" data-background="#4d7e65" data-background-transition="zoom">
+<h2>Webpack는?</h2>
+<ul>
+	<li>module bundler </li>
+	<li>- 코드 상의 의존성 모듈(commonJS, AMD)을 컴파일 함</li>
+	<li>브라우저에서 Node.js의 수많은 모듈(npm)을 사용할 수 있음 - https://www.npmjs.com/</li>
+	<li>다양한 리소스들을 모듈화 할 수 있음( .sass, .less, .css, js, .png ... )</li>
+	<li>컴파일 과정이 필요</li>
+	<li>webpack: <a href="https://webpack.github.io/" target="_blank">https://webpack.github.io/</a></li>
+</ul>
+</section>
+
+
+
+
+<section data-transition="slide" data-background="#b5533c" data-background-transition="zoom">
+<h2>Webpack 설치</h2>
+<pre><code class="hljs" data-trim contenteditable>
+$ npm install webpack -g
+</code></pre>
+</section>
+
+
+
+
+<section data-transition="slide" data-background="#4d7e65" data-background-transition="zoom">
+<h2>Webpack 설정 및 실행</h2>
+
+<pre><code class="hljs" data-trim contenteditable>
+var webpack = require( 'webpack' );
+
+module.exports = {
+  context: __dirname + '/src',
+  entry: {
+    javascript: './js/module.js'
+  },
+  output: {
+    filename: 'app.js',
+    path: __dirname + '/src/dist',
+  },
+  plugins: [new webpack.optimize.UglifyJsPlugin()],
+  module: {
+    loaders: [{test: /\.js/, loaders: ['babel-loader']}]
+  }
+}
+</code></pre>
+
+<pre><code class="hljs" data-trim contenteditable>
+$ webpack
+</code></pre>
+</section>
+
+
+
+
+
+<section data-transition="slide" data-background="#4d7e65" data-background-transition="zoom">
+<h2>browserify는?</h2>
+<ul>
+	<li>브라우저에서 commonJS형태의 모듈 패턴 사용 가능</li>
+	<li>(브라우저에서 Node.js와 동일한 방법으로 require 메소드를 사용 할 수 있다)</li>
+	<li>브라우저에서 Node.js의 수많은 모듈(npm)을 사용할 수 있음 - https://www.npmjs.com/</li>
+	<li>컴파일 과정이 필요</li>
+	<li>browserify<a href="http://browserify.org/" target="_blank">http://browserify.org/</a></li>
+</ul>
+</section>
+
+
+
+
+<section data-transition="slide" data-background="#b5533c" data-background-transition="zoom">
+<h2>browserify 실행</h2>
+<pre><code class="hljs" data-trim contenteditable>
+$ browserify main.js -o bundle.js
+</code></pre>
+</section>
+
+
+
+
+
+<section data-transition="slide" data-background="#4d7e65" data-background-transition="zoom">
+<h2>gulp + browserify 설정</h2>
+<pre><code class="hljs" data-trim contenteditable>
+//gulpfile.js
+
+'use strict';
+
+var gulp = require('gulp');
+var browserify = require('browserify');
+var babelify = require('babelify');
+var source = require('vinyl-source-stream');
+var buffer = require('vinyl-buffer');
+var uglify = require('gulp-uglify');
+
+gulp.task('build', function () {
+  browserify({
+    entries: './src/js/class.js',
+    debug: false
+  })
+  .transform( babelify )
+  .bundle()
+  .pipe(source( 'app.js' ))
+  .pipe(buffer())
+  .pipe(uglify())
+  .pipe(gulp.dest('./src/dist/'))
+});
+
+gulp.task('watch', ['build'], function() {
+  gulp.watch(['./src/js/*.js' ],['build'] );
+  gulp.watch(['./views/**/*.ejs' ], ['build'] );
+});
+
+gulp.task('default', ['watch']);
+
+</code></pre>
+</section>
+
+
+
+
+<section data-transition="slide" data-background="#b5533c" data-background-transition="zoom">
+<h2>gulp + browserify 실행</h2>
+<pre><code class="hljs" data-trim contenteditable>
+$ gulp
+</code></pre>
+</section>
+
+
+
+
+<section data-transition="slide" data-background="#4d7e65" data-background-transition="zoom">
+<h2>gulp + webpack 설정</h2>
+<pre><code class="hljs" data-trim contenteditable>
+//gulpfile.js
+
+'use strict';
+
+var gulp = require('gulp');
+var gutil = require('gulp-util');
+var webpack = require('webpack');
+
+gulp.task('webpack', function() {
+
+    webpack({
+      context: __dirname + '/src',
+      entry: {
+        javascript: './js/class.js'
+      },
+      output: {
+        filename: 'app.js',
+        path: __dirname + '/src/dist',
+      },
+      plugins: [new webpack.optimize.UglifyJsPlugin()],
+      module: {
+        loaders: [{test: /\.js/, loaders: ['babel-loader']}]
+      }
+    }, function(err, stats) {
+        if(err) throw new gutil.PluginError('webpack', err);
+    });
+});
+gulp.task('default', ['webpack']);
+</code></pre>
+</section>
+
+
+
+
+<section data-transition="slide" data-background="#b5533c" data-background-transition="zoom">
+<h2>gulp + webpack 실행</h2>
+<pre><code class="hljs" data-trim contenteditable>
+$ gulp
+</code></pre>
+</section>
 			</div>
-
 		</div>
 
 		<script src="lib/js/head.min.js"></script>
