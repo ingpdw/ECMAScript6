@@ -70,6 +70,20 @@
 <h2>ES6의 새로운 요소</h2>
 </section>
 
+<section data-transition="slide" data-background="#4d7e65" data-background-transition="zoom">
+<h2>ES6의 새로운 요소 - const</h2>
+<pre><code class="hljs" data-trim contenteditable>
+//ES6
+const version = 1.0;
+
+version = 1.5
+//syntaxError 'version' is read-only
+
+var version = 1.5;
+//syntaxError ‘Duplicate declaration 'version'
+</code></pre>
+</section>
+
 <section data-transition="slide" data-background="#b5533c" data-background-transition="zoom">
 <h2>ES6의 새로운 요소 - let</h2>
 <div style="width:50%;float:left;"><pre><code class="hljs" data-trim contenteditable>
@@ -99,20 +113,6 @@ console.log( version );
 
 </section>
 
-
-<section data-transition="slide" data-background="#4d7e65" data-background-transition="zoom">
-<h2>ES6의 새로운 요소 - const</h2>
-<pre><code class="hljs" data-trim contenteditable>
-//ES6
-const version = 1.0;
-
-version = 1.5
-//syntaxError 'version' is read-only
-
-var version = 1.5;
-//syntaxError ‘Duplicate declaration 'version'
-</code></pre>
-</section>
 
 <section data-transition="slide" data-background="#b5533c" data-background-transition="zoom">
 <h2>ES6의 새로운 요소 - default arguments</h2>
@@ -181,6 +181,7 @@ export function multi( x, y ){
 let name = 'Bob';
 let time = 'today';
 
+//Backtick
 let string = `Hello ${name}, how are you ${time}`;
 //Hello Bob, how are you today
 
@@ -376,10 +377,11 @@ function* gen() {
 }
 
 var generator = gen();
-generator.next(); //1번
-generator.next(); //2번
-generator.next(); //3번
-generator.next(); //4번
+generator.next(); //{value: '1번', done: false}
+generator.next(); //{value: '2번', done: false}
+generator.next(); //{value: '3번', done: false}
+generator.next(); //{value: '4번', done: false}
+generator.next(); //{value: undefined, done: true}
 </code></pre>
 </section>
 
@@ -402,6 +404,8 @@ generator.next();
 </code></pre>
 </section>
 
+
+
 <section>
 <h2>ES6의 새로운 요소 - list matching</h2>
 <pre><code class="hljs" data-trim contenteditable>
@@ -413,23 +417,44 @@ console.log( a + b + c); //6
 </section>
 
 
-<section data-transition="slide" data-background="#4d7e65" data-background-transition="zoom">
-<h2>ES6의 새로운 요소 - Set, Map</h2>
+<section>
+<h2>ES6의 새로운 요소 - list matching</h2>
 <pre><code class="hljs" data-trim contenteditable>
 //ES6
 
-var s = new Set();
-s.add( 'one' );
-s.add( 'two' );
-s.add( '3' );
-s.delete( '3' );
-console.log( s );
-
-var m = new Map();
-m.set( 'age', 10 );
-console.log( m.get( 'age' ) ); //10
+let [ a, b, c ] = [ 1, 2, 3 ];
+console.log( a + b + c); //6
 </code></pre>
 </section>
+
+
+<section>
+<h2>ES6의 새로운 요소 - spread</h2>
+<pre><code class="hljs" data-trim contenteditable>
+//ES6
+var nums1 = [ 30, 40 ];
+var nums2 = [ 10, 20, ...nums1, 50, 60 ];
+console.log( nums2 ) //[ 10, 20, 30, 40, 50, 60 ];
+
+var nums3 = [ 5, 10 ];
+var nums4 = [ 30, 40 ];
+nums3.push( ...nums4 );
+console.log( nums3 ) //[ 5, 10, 30, 40 ];
+</code></pre>
+</section>
+
+
+<section data-transition="slide" data-background="#4d7e65" data-background-transition="zoom">
+<h2>ES6의 새로운 요소</h2>
+<ul>
+	<li>Promise</li>
+	<li>Proxy</li>
+	<li>reflect</li>
+</ul>
+</section>
+
+
+
 
 
 
@@ -453,10 +478,12 @@ console.log( m.get( 'age' ) ); //10
 <section data-transition="slide" data-background="#000000" data-background-transition="zoom">
 <h2>Babel.js는?</h2>
 <p><img src="./imgs/babel-logo.png" width="200" style="border: 0px"/></p>
-<p>ES6 문법으로 작성된 파일을 <br/>ES5로 변환-컴파일하는 transform compiler</p>
+<ul>
+	<li>transform compiler</li>
+	<li>ES6를 ES5로 변환</li>
+</ul>
 <p><a href="https://babeljs.io/" target="_blank">https://babeljs.io/</a></p>
 </section>
-
 
 
 
@@ -478,12 +505,11 @@ $ npm install --global babel
 
 
 
-
 <section data-transition="slide" data-background="#b5533c" data-background-transition="zoom">
-<h2>Babel.js 실행</h2>
+<h2>Babel.js 실행 결과</h2>
 
 <pre><code class="hljs" data-trim contenteditable>
-$ babel Polygon.js --out-file compiled.js
+$ babel Polygon.js --out-file Polygon.compiled.js
 </code></pre>
 
 <div style="width:50%;float:left;"><pre><code class="hljs" data-trim contenteditable>
@@ -508,7 +534,7 @@ console.log( polygon.calcArea() );
 </code></pre></div>
 
 <div style="width:50%;float:left;"><pre><code class="hljs" data-trim contenteditable>
-//compiled.js
+//Polygon.compiled.js
 var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
@@ -540,9 +566,88 @@ var Polygon = (function () {
 
 
 
+<section data-transition="slide" data-background="#b5533c" data-background-transition="zoom">
+<h2>Babel.js 실행 결과</h2>
+
+<pre><code class="hljs" data-trim contenteditable>
+$ babel arrowFunction.js --out-file arrowFunction.compiled.js
+</code></pre>
+
+<div style="width:50%;float:left;"><pre><code class="hljs" data-trim contenteditable>
+//arrowFunction.js
+var sum = ( a, b ) => a + b;
+console.log( sum( 60, 20 ) );
+
+</code></pre></div>
+
+<div style="width:50%;float:left;"><pre><code class="hljs" data-trim contenteditable>
+//arrowFunction.compiled.js
+var sum = function sum(a, b) {
+	return a + b;
+};
+console.log(sum(60, 20));
+</code></pre></div>
+</section>
+
+
+<section data-transition="slide" data-background="#b5533c" data-background-transition="zoom">
+<h2>Babel.js 실행 결과</h2>
+
+<pre><code class="hljs" data-trim contenteditable>
+$ babel listMatching.js --out-file listMatching.compiled.js
+</code></pre>
+
+<div style="width:50%;float:left;"><pre><code class="hljs" data-trim contenteditable>
+//listMatching.js
+let [ a, b, c ] = [ 1, 2, 3 ];
+console.log( a + b + c); //6
+
+</code></pre></div>
+
+<div style="width:50%;float:left;"><pre><code class="hljs" data-trim contenteditable>
+//listMatching.compiled.js
+var a = 1;
+var b = 2;
+var c = 3;
+
+console.log(a + b + c); //6
+</code></pre></div>
+</section>
+
+
+
+<section data-transition="slide" data-background="#b5533c" data-background-transition="zoom">
+<h2>Babel.js 실행 결과</h2>
+
+<pre><code class="hljs" data-trim contenteditable>
+$ babel listMatching.js --out-file listMatching.compiled.js
+</code></pre>
+
+<div style="width:50%;float:left;"><pre><code class="hljs" data-trim contenteditable>
+//import.js
+import util from 'js/external.js';
+
+console.log( util.multi( 4, 5 ) );
+
+</code></pre></div>
+
+<div style="width:50%;float:left;"><pre><code class="hljs" data-trim contenteditable>
+//import.compiled.js
+function _interopRequireDefault(obj) {
+	return obj && obj.__esModule ? obj : { 'default': obj };
+}
+
+var _jsExternalJs = require('js/external.js');
+
+var _jsExternalJs2 = _interopRequireDefault(_jsExternalJs);
+
+console.log(_jsExternalJs2['default'].multi(4, 5));
+</code></pre></div>
+</section>
+
 
 <section data-transition="slide" data-background="#4d7e65" data-background-transition="zoom">
-<h2>Babel.js 실행</h2>
+<h2>Babel.js 실행2</h2>
 
 <pre><code class="hljs" data-trim contenteditable>
 $ babel ./src --out-file compiled.js
@@ -567,18 +672,42 @@ $ babel ./src/js/ --watch compiled.js
 
 
 
+<section data-transition="slide" data-background="#b5533c" data-background-transition="zoom">
+<h2>IE7, IE8을 위한 Babel.js의 pollyfill</h2>
+<pre><code class="hljs" data-trim contenteditable>
+require("babel/polyfill");
+</code></pre>
+
+<pre><code class="hljs" data-trim contenteditable>
+<script src="browser-polyfill.js"></script>
+</code></pre>
+
+<p><a href="https://babeljs.io/docs/usage/polyfill/">https://babeljs.io/docs/usage/polyfill/</a></p>
+</section>
+
+
 
 
 <section data-transition="slide" data-background="#4d7e65" data-background-transition="zoom">
 <h2>Webpack는?</h2>
 <ul>
-	<li>module bundler </li>
-	<li>- 코드 상의 의존성 모듈(commonJS, AMD)을 컴파일 함</li>
-	<li>브라우저에서 Node.js의 수많은 모듈(npm)을 사용할 수 있음 - https://www.npmjs.com/</li>
-	<li>다양한 리소스들을 모듈화 할 수 있음( .sass, .less, .css, js, .png ... )</li>
+	<li>module bundler - <a href="https://webpack.github.io/" target="_blank">https://webpack.github.io/</a></li>
+	<li>코드 상의 의존성 모듈(commonJS, AMD)을 컴파일 함</li>
+	<li>브라우저에서 Node.js의 수많은 모듈(npm) 사용 가능<br/><a href="https://www.npmjs.com/" target="_blank">https://www.npmjs.com/</a></li>
+	<li>다양한 리소스의 모듈화 지원(.sass, .less, .css, js, .png ...)</li>
 	<li>컴파일 과정이 필요</li>
-	<li>webpack: <a href="https://webpack.github.io/" target="_blank">https://webpack.github.io/</a></li>
 </ul>
+
+<pre><code class="hljs" data-trim contenteditable>
+var $ = require( 'jquery' );
+var util = require( 'util' );
+var User = require( 'User' );
+
+$( 'a' ).on( 'click', ( evt ) =>{
+	var user = new User();
+	user.setId( util.UUID() );
+});
+</code></pre>
 </section>
 
 
@@ -598,12 +727,13 @@ $ npm install webpack -g
 <h2>Webpack 설정 및 실행</h2>
 
 <pre><code class="hljs" data-trim contenteditable>
+//webpack.config.js
 var webpack = require( 'webpack' );
 
 module.exports = {
   context: __dirname + '/src',
   entry: {
-    javascript: './js/module.js'
+    javascript: './js/main.js'
   },
   output: {
     filename: 'app.js',
@@ -626,17 +756,27 @@ $ webpack
 
 
 <section data-transition="slide" data-background="#4d7e65" data-background-transition="zoom">
+
 <h2>browserify는?</h2>
+
 <ul>
-	<li>브라우저에서 commonJS형태의 모듈 패턴 사용 가능</li>
-	<li>(브라우저에서 Node.js와 동일한 방법으로 require 메소드를 사용 할 수 있다)</li>
-	<li>브라우저에서 Node.js의 수많은 모듈(npm)을 사용할 수 있음 - https://www.npmjs.com/</li>
+	<li>module bundler - <a href="http://browserify.org/" target="_blank">http://browserify.org/</a></li>
+	<li>코드 상의 의존성 모듈(commonJS)을 컴파일 함</li>
+	<li>브라우저에서 Node.js의 수많은 모듈(npm) 사용 가능<br/><a href="https://www.npmjs.com/" target="_blank">https://www.npmjs.com/</a></li>
 	<li>컴파일 과정이 필요</li>
-	<li>browserify<a href="http://browserify.org/" target="_blank">http://browserify.org/</a></li>
 </ul>
+
+<pre><code class="hljs" data-trim contenteditable>
+var $ = require( 'jquery' );
+var util = require( 'util' );
+var User = require( 'User' );
+
+$( 'a' ).on( 'click', ( evt ) =>{
+	var user = new User();
+	user.setId( util.UUID() );
+});
+</code></pre>
 </section>
-
-
 
 
 <section data-transition="slide" data-background="#b5533c" data-background-transition="zoom">
@@ -647,7 +787,13 @@ $ browserify main.js -o bundle.js
 </section>
 
 
-
+<section data-transition="slide" data-background="#b5533c" data-background-transition="zoom">
+<h2>gulp와의 조합</h2>
+<p><a href="http://gulpjs.com/" target="_blank">http://gulpjs.com/</a></p>
+<pre><code class="hljs" data-trim contenteditable>
+$ npm install --global gulp
+</code></pre>
+</section>
 
 
 <section data-transition="slide" data-background="#4d7e65" data-background-transition="zoom">
@@ -683,12 +829,8 @@ gulp.task('watch', ['build'], function() {
 });
 
 gulp.task('default', ['watch']);
-
 </code></pre>
 </section>
-
-
-
 
 <section data-transition="slide" data-background="#b5533c" data-background-transition="zoom">
 <h2>gulp + browserify 실행</h2>
@@ -696,8 +838,6 @@ gulp.task('default', ['watch']);
 $ gulp
 </code></pre>
 </section>
-
-
 
 
 <section data-transition="slide" data-background="#4d7e65" data-background-transition="zoom">
@@ -736,13 +876,31 @@ gulp.task('default', ['webpack']);
 
 
 
-
 <section data-transition="slide" data-background="#b5533c" data-background-transition="zoom">
 <h2>gulp + webpack 실행</h2>
 <pre><code class="hljs" data-trim contenteditable>
 $ gulp
 </code></pre>
 </section>
+
+
+
+<section data-transition="slide" data-background="#b5533c" data-background-transition="zoom">
+<h2>ES6 + babel.js의 단점</h2>
+<ul>
+	<li>컴파일 과정이 필요</li>
+	<li>용량이 살짝 커짐</li>
+</ul>
+</section>
+
+<section data-transition="slide" data-background="#b5533c" data-background-transition="zoom">
+<h2>QnA</h2>
+</section>
+
+<section data-transition="slide" data-background="#b5533c" data-background-transition="zoom">
+<h2>감사합니다.</h2>
+</section>
+
 			</div>
 		</div>
 
