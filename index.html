@@ -14,7 +14,30 @@
 		<link rel="stylesheet" href="css/theme/black.css" id="theme">
 		<!-- Code syntax highlighting -->
 		<link rel="stylesheet" href="lib/css/zenburn.css">
-
+		<style>
+			body {
+			  background: #1c1e20;
+			  background: -moz-radial-gradient(center, circle cover, #555a5f 0%, #1c1e20 100%);
+			  background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%, #555a5f), color-stop(100%, #1c1e20));
+			  background: -webkit-radial-gradient(center, circle cover, #555a5f 0%, #1c1e20 100%);
+			  background: -o-radial-gradient(center, circle cover, #555a5f 0%, #1c1e20 100%);
+			  background: -ms-radial-gradient(center, circle cover, #555a5f 0%, #1c1e20 100%);
+			  background: radial-gradient(center, circle cover, #555a5f 0%, #1c1e20 100%);
+			  background-color: #2b2b2b;
+			  color: #aaa }
+			::selection {color: #fff;background: #FF5E99;text-shadow: none; }
+			.reveal h2 {text-shadow: 1px 1px #c9c9c9;}
+			.reveal p {margin: 20px 0;line-height: 1.3;text-shadow: 1px 1px #c9c9c9;}
+			.reveal a{text-shadow: 0px 0px;color: #bb9998}
+			.reveal a:hover{text-shadow: 0px 0px;color: #cc9393}
+			.reveal .point{color: #bb9998 !important;outline: gray;text-shadow: 0px 0px;}
+		 	.la{text-align:left;}
+			.reveal .controls .navigate-left, .reveal .controls .navigate-left.enabled {border-right-color: #cc9393;}
+			.reveal .controls .navigate-right, .reveal .controls .navigate-right.enabled {border-left-color: #cc9393;}
+			.reveal .controls .navigate-left.enabled:hover {border-right-color: #bb9998; }
+			.reveal .controls .navigate-right.enabled:hover {border-left-color: #bb9998; }
+			.reveal .progress span {background: #cc9393;}
+		</style>
 
 		<!-- Printing and PDF exports -->
 		<script>
@@ -34,52 +57,55 @@
 
 		<div class="reveal">
 			<div class="slides">
-<section data-transition="slide"data-background-transition="zoom">
+<section data-transition="convex"  data-background-transition="zoom">
 <h2>ECMAScrpt6</h2>
-<p>pdw</p>
+<p>UI개발팀</p>
 </section>
 
-<section data-transition="slide"data-background-transition="zoom">
+<section data-transition="convex" data-background-transition="zoom">
 <h2>목차</h2>
-<ul>
-<li>ECMAScript6란?</li>
-<li>ECMAScript6의 새로운 문법</li>
-<li>Babel.js을 이용한 ECMAScript6의 실무 적용</li>
-<li>다양한 빌드 방식 소개</li>
-</ul>
+
+<p class="la">ECMAScript6란?</p>
+<p class="la">ECMAScript6의 새로운 문법</p>
+<p class="la">Babel.js을 이용한 ECMAScript6의 실무 적용</p>
+<p class="la">다양한 빌드 방식 소개</p>
 </section>
 
-<section data-transition="slide" data-background-transition="zoom">
+<section data-transition="convex"  data-background-transition="zoom">
 <h2>ECMAScrpt6란?</h2>
-<ul>
-	<li>JavaScript의 새로운 에디션</li>
-	<li>JavaScript의 새로운 표준</li>
-	<li>다른 language의 유용성있는 요소들을 추가</li>
-</ul>
+
+<p class="la">JavaScript의 새로운 에디션</p>
+<p class="la">JavaScript의 새로운 표준</p>
+<p class="la">다른 language의 유용성있는 요소들을 추가</p>
+
 </section>
 
-<section data-transition="slide" data-background-transition="zoom">
+<section data-transition="convex"  data-background-transition="zoom">
 <h2>ES6의 새로운 요소</h2>
 </section>
 
-<section data-transition="slide" data-background-transition="zoom">
+<section data-transition="convex"  data-background-transition="zoom">
 <h2>ES6의 새로운 요소 - const</h2>
-<pre><code class="hljs" data-trim contenteditable>
+
+<div><pre><code class="hljs" data-trim contenteditable>
 //ES6
+
 const version = 1.0;
 
 version = 1.5
-//syntaxError 'version' is read-only
+/* syntaxError 'version' is read-only */
 
 var version = 1.5;
-//syntaxError ‘Duplicate declaration 'version'
-</code></pre>
+/* syntaxError ‘Duplicate declaration 'version' */
+
+</code></pre></div>
 </section>
 
-<section data-transition="slide"  data-background-transition="zoom">
+<section data-transition="convex"   data-background-transition="zoom">
 <h2>ES6의 새로운 요소 - let</h2>
 <div style="width:50%;float:left;"><pre><code class="hljs" data-trim contenteditable>
 //ES5
+
 {
  var version = 1.8;
  console.log( version ); //1.8
@@ -87,7 +113,6 @@ var version = 1.5;
 
 console.log( version ); //1.8
 
-console.log( tmp );
 </code></pre></div>
 
 <div style="width:50%;float:left;"><pre><code class="hljs" data-trim contenteditable>
@@ -106,8 +131,8 @@ console.log( version );
 </section>
 
 
-<section data-transition="slide" data-background-transition="zoom">
-<h2>ES6의 새로운 요소 - default arguments</h2>
+<section data-transition="convex"  data-background-transition="zoom">
+<h2>ES6의 새로운 요소 <br/>- default arguments</h2>
 <div style="width:50%;float:left;"><pre><code class="hljs" data-trim contenteditable>
 //ES5
 function sum( a, b ){
@@ -116,7 +141,6 @@ function sum( a, b ){
 }
 
 sum( 20 ); //50
-
 </code></pre></div>
 
 <div style="width:50%;float:left;"><pre><code class="hljs" data-trim contenteditable>
@@ -126,11 +150,10 @@ function sum( a, b = 30 ){
 }
 
 sum( 20 ); //50
-
 </code></pre></div>
 </section>
 
-<section data-transition="slide" data-background-transition="zoom">
+<section data-transition="convex"  data-background-transition="zoom">
 <h2>ES6의 새로운 요소 - rest arguments</h2>
 <pre><code class="hljs" data-trim contenteditable>
 //ES6
@@ -149,23 +172,28 @@ sum( 5, 10, 15, 20, 25 ); //75
 </section>
 
 
-<section data-transition="slide" data-background-transition="zoom">
+<section data-transition="convex"  data-background-transition="zoom">
 <h2>ES6의 새로운 요소 - module</h2>
-<pre><code class="hljs" data-trim contenteditable>
+
+<div style="width:50%;float:left;"><pre><code class="hljs" data-trim contenteditable>
 //ES6
 import util from 'js/external.js';
 
 console.log( util.multi( 4, 5 ) );
 
+</code></pre></div>
+
+<div style="width:50%;float:left;"><pre><code class="hljs" data-trim contenteditable>
 //js/external.js
-export function multi( x, y ){
+exports.multi = function( x, y ){
  return x * y;
 };
-</code></pre>
+</code></pre></div>
+
 </section>
 
 
-<section data-transition="slide" data-background-transition="zoom">
+<section data-transition="convex"  data-background-transition="zoom">
 <h2>ES6의 새로운 요소 - template</h2>
 <pre><code class="hljs" data-trim contenteditable>
 //ES6
@@ -181,7 +209,7 @@ let string = `Hello ${name}, how are you ${time}`;
 
 
 
-<section data-transition="slide"  data-background-transition="zoom">
+<section data-transition="convex"   data-background-transition="zoom">
 <h2>ES6의 새로운 요소 - class</h2>
 <div style="width:50%;float:left;"><pre><code class="hljs" data-trim contenteditable>
 //ES5
@@ -189,18 +217,19 @@ function User(name){
  this._name = name;
 }
 
-User.prototype = Object.create(null,{
- constructor: {
-  value: User
- },
- say: {
-  value: function() {
-   return 'name: ' + this._name;
-  }
- }
-});
+User.prototype.say=function(){
+ return 'hello, ' + this._name;
+}
 
-var user = new User('Alice');
+User.prototype.getName=function(){
+ return this._name;
+}
+
+User.prototype.setName=function( name ){
+ this._name = name;
+}
+
+var user = new User( 'myName' );
 console.log(user.say());
 </code></pre></div>
 
@@ -210,17 +239,27 @@ class User {
  constructor(name) {
   this._name = name;
  }
- say() {
-  return 'name: ' + this._name;
+
+ say(){
+  return 'hello, ' + this._name;
+ }
+
+ get name(){
+  return this._name;
+ }
+
+ set name( name ){
+  this._name = name;
  }
 }
 
-var user = new User('Alice');
+var user = new User( 'myName' );
 console.log(user.say());
+
 </code></pre></div>
 </section>
 
-<section data-transition="slide"  data-background-transition="zoom">
+<section data-transition="convex"   data-background-transition="zoom">
 <h2>ES6의 새로운 요소 - class 상속</h2>
 <div style="width:50%;float:left;"><pre><code class="hljs" data-trim contenteditable>
 //ES5
@@ -251,7 +290,7 @@ class Admin extends User {
 </code></pre></div>
 </section>
 
-<section data-transition="slide" data-background-transition="zoom">
+<section data-transition="convex"  data-background-transition="zoom">
 <h2>ES6의 새로운 요소 - arrow function</h2>
 <div style="width:50%;float:left;"><pre><code class="hljs" data-trim contenteditable>
 //ES5
@@ -274,7 +313,7 @@ sum( 10, 20 );
 
 
 
-<section data-transition="slide" data-background-transition="zoom">
+<section data-transition="convex"  data-background-transition="zoom">
 <h2>ES6의 새로운 요소 - arrow function</h2>
 <div style="width:50%;float:left;"><pre><code class="hljs" data-trim contenteditable>
 //ES5
@@ -305,7 +344,7 @@ var count ={
 </code></pre></div>
 </section>
 
-<section data-transition="slide" data-background-transition="zoom">
+<section data-transition="convex"  data-background-transition="zoom">
 <h2>ES6의 새로운 요소 - for of</h2>
 <div style="width:50%;float:left;"><pre><code class="hljs" data-trim contenteditable>
 //ES5
@@ -337,7 +376,7 @@ for( let x of arr ){
 </section>
 
 
-<section data-transition="slide" data-background-transition="zoom">
+<section data-transition="convex"  data-background-transition="zoom">
 <h2>ES6의 새로운 요소 - Generator</h2>
 <pre><code class="hljs" data-trim contenteditable>
 //ES6
@@ -358,7 +397,7 @@ myGen.next(); //{value: undefined, done: true}
 </code></pre>
 </section>
 
-<section data-transition="slide" data-background-transition="zoom">
+<section data-transition="convex"  data-background-transition="zoom">
 <h2>ES6의 새로운 요소 - Generator</h2>
 <pre><code class="hljs" data-trim contenteditable>
 //ES6
@@ -377,7 +416,7 @@ myGen.next(); //{value: 4, done: false}
 
 
 
-<section>
+<section data-transition="convex"  data-background-transition="zoom">
 <h2>ES6의 새로운 요소 - list matching</h2>
 <pre><code class="hljs" data-trim contenteditable>
 //ES6
@@ -388,7 +427,7 @@ console.log( a + b + c); //6
 
 
 
-<section>
+<section data-transition="convex"  data-background-transition="zoom">
 <h2>ES6의 새로운 요소 - Maps</h2>
 <pre><code class="hljs" data-trim contenteditable>
 //ES6
@@ -396,15 +435,15 @@ var map = new Map();
 map.set( 'myKey', 'abcde' );
 map.size; //1
 map.get( 'myKey' ); //abcde
-sayings.has( 'myKey' ); //true
-sayings.delete( 'myKey' );
+map.has( 'myKey' ); //true
+map.delete( 'myKey' );
 </code></pre>
 </section>
 
 
 
 
-<section>
+<section data-transition="convex"  data-background-transition="zoom">
 <h2>ES6의 새로운 요소 - Set</h2>
 <pre><code class="hljs" data-trim contenteditable>
 //ES6
@@ -420,7 +459,7 @@ mySet2 = new Set( [1, 2, 3, 4] );
 
 
 
-<section>
+<section data-transition="convex"  data-background-transition="zoom">
 <h2>ES6의 새로운 요소 - list matching</h2>
 <pre><code class="hljs" data-trim contenteditable>
 //ES6
@@ -430,7 +469,7 @@ console.log( a + b + c); //6
 </section>
 
 
-<section>
+<section data-transition="convex"  data-background-transition="zoom">
 <h2>ES6의 새로운 요소 - spread</h2>
 <pre><code class="hljs" data-trim contenteditable>
 //ES6
@@ -446,7 +485,7 @@ console.log( nums3 ) //[ 5, 10, 30, 40 ];
 </section>
 
 
-<section>
+<section data-transition="convex"  data-background-transition="zoom">
 <h2>ES6의 새로운 요소 - Symbol</h2>
 <pre><code class="hljs" data-trim contenteditable>
 //ES6
@@ -464,20 +503,70 @@ console.log( myObj[yourSymbol] ); //unique2;
 </section>
 
 
-<section>
+<section data-transition="convex"  data-background-transition="zoom">
 <h2>ES6의 새로운 요소 - Promise</h2>
-<pre><code class="hljs" data-trim contenteditable>
+<div style="width:50%;float:left;"><pre><code class="hljs" data-trim contenteditable>
+//ES5
+//Callback Hell
+$a_ajax({
+ success: function(a){
+  $b_ajax({
+   succsess: function(b){
+    $c_ajax({
+     success: function(c){
+      $d_ajax({
+       success: function(d){
+       //TODO success
+        var aResult = a;
+        var aResult = b;
+        var aResult = c;
+        var aResult = d;
+       }
+      })
+     }
+    })
+   }
+  })
+ }
+})
+</code></pre></div>
+
+<div style="width:50%;float:left;"><pre><code class="hljs" data-trim contenteditable>
 //ES6
-</code></pre>
+Promiss.all([a, b, c, d],
+ function(data){
+  //resolve
+  var aResult = data[0];
+  var bResult = data[1];
+  var cResult = data[2];
+  var cResult = data[3];
+}, function(err){
+ //reject
+});
+
+function a(){
+ var deferred = Q.defer();
+ $.ajax({
+  success: function( data ){
+   //resolve
+   deferred.resolve( data );
+  },
+  error: function( data ){
+   //reject
+   deferred.reject( data );
+  }
+ });
+ return deferred.promise;
+}
+</code></pre></div>
+
 </section>
 
 
-<section data-transition="slide" data-background-transition="zoom">
+<section data-transition="convex"  data-background-transition="zoom">
 
 <h2>ES6의 브라우저 별 지원 현황</h2>
-<ul>
-	<li><a href="http://kangax.github.io/compat-table/es6/" target="_blank">http://kangax.github.io/compat-table/es6/</a></li>
-</ul>
+<p><a href="http://kangax.github.io/compat-table/es6/" target="_blank">http://kangax.github.io/compat-table/es6/</a></p>
 
 <p><img src="./imgs/es6.png" height="300" /></p>
 
@@ -486,19 +575,19 @@ console.log( myObj[yourSymbol] ); //unique2;
 
 
 
-<section data-transition="slide" data-background-transition="zoom">
+<section data-transition="convex"  data-background-transition="zoom">
 <h2>Babel.js을 이용한<br />ECMAScript6의 실무 적용</h2>
 </section>
 
 
 
 
-<section data-transition="slide" data-background-transition="zoom">
+<section data-transition="convex"  data-background-transition="zoom">
 <h2>Babel.js는?</h2>
 <!--p><img src="./imgs/babel-logo.png" width="200" style="border: 0px"/></p-->
 <ul>
 	<li>transform compiler</li>
-	<li>(ES6를 ES5로 변환)</li>
+	<li>ES6를 ES5로 변환</li>
 	<li><a href="https://babeljs.io/" target="_blank">https://babeljs.io/</a></li>
 </ul>
 
@@ -506,7 +595,7 @@ console.log( myObj[yourSymbol] ); //unique2;
 
 
 
-<section data-transition="slide" data-background-transition="zoom">
+<section data-transition="convex"  data-background-transition="zoom">
 <h2>Babel.js는? - 컴파일 리스트</h2>
 <!--p><img src="./imgs/babel.png" /></p-->
 
@@ -550,7 +639,7 @@ console.log( myObj[yourSymbol] ); //unique2;
 
 
 
-<section data-transition="slide" data-background-transition="zoom">
+<section data-transition="convex"  data-background-transition="zoom">
 <h2>Babel.js 설치</h2>
 <pre><code class="hljs" data-trim contenteditable>
 $ npm install --global babel
@@ -560,7 +649,7 @@ $ npm install --global babel
 
 
 
-<section data-transition="slide" data-background-transition="zoom">
+<section data-transition="convex"  data-background-transition="zoom">
 <h2>Babel.js 실행 결과</h2>
 
 <pre><code class="hljs" data-trim contenteditable>
@@ -617,7 +706,7 @@ var Polygon = (function () {
 
 
 
-<section data-transition="slide" data-background-transition="zoom">
+<section data-transition="convex"  data-background-transition="zoom">
 <h2>Babel.js 실행 결과</h2>
 
 <pre><code class="hljs" data-trim contenteditable>
@@ -640,7 +729,7 @@ console.log(sum(60, 20));
 </section>
 
 
-<section data-transition="slide" data-background-transition="zoom">
+<section data-transition="convex"  data-background-transition="zoom">
 <h2>Babel.js 실행 결과</h2>
 
 <pre><code class="hljs" data-trim contenteditable>
@@ -665,36 +754,40 @@ console.log(a + b + c); //6
 
 
 
-<section data-transition="slide" data-background-transition="zoom">
+<section data-transition="convex"  data-background-transition="zoom">
 <h2>Babel.js 실행 결과</h2>
 
 <pre><code class="hljs" data-trim contenteditable>
-$ babel listMatching.js --out-file listMatching.compiled.js
+$ babel template.js --out-file template.compiled.js
 </code></pre>
 
 <div style="width:50%;float:left;"><pre><code class="hljs" data-trim contenteditable>
-//import.js
-import util from 'js/external.js';
+//template.js
+let name = 'Bob';
+let time = 'today';
 
-console.log( util.multi( 4, 5 ) );
+let string = `Hello ${name}, how are you ${time}`;
+//Hello Bob, how are you today
+
+console.log( string );
 </code></pre></div>
 
 <div style="width:50%;float:left;"><pre><code class="hljs" data-trim contenteditable>
-//import.compiled.js
-function _interopRequireDefault(obj) {
- return obj && obj.__esModule ? obj : { 'default': obj };
-}
+//template.compiled.js
+var name = 'Bob';
+var time = 'today';
 
-var _jsExternalJs = require('js/external.js');
-var _jsExternalJs2 = _interopRequireDefault(_jsExternalJs);
-console.log(_jsExternalJs2['default'].multi(4, 5));
+var string = 'Hello ' + name + ', how are you ' + time;
+//Hello Bob, how are you today
+
+console.log(string);
 </code></pre></div>
 </section>
 
-<section data-transition="slide" data-background-transition="zoom">
-<h2>Babel.js 실행2</h2>
+<section data-transition="convex"  data-background-transition="zoom">
+<h2>Babel.js 실행</h2>
 
-<li><a href="https://babeljs.io/docs/usage/options/" target="_blank">https://babeljs.io/docs/usage/options/</a></li>
+<p><a href="https://babeljs.io/docs/usage/options/" target="_blank">https://babeljs.io/docs/usage/options/</a></p>
 
 <pre><code class="hljs" data-trim contenteditable>
 $ babel ./src --out-file compiled.js
@@ -708,34 +801,29 @@ $ babel ./src/js/ --watch compiled.js
 
 
 
-<section data-transition="slide" data-background-transition="zoom">
+<section data-transition="convex"  data-background-transition="zoom">
 <h2>Babel.js의 브라우저 지원</h2>
-<ul>
-	<li><a href="http://kangax.github.io/compat-table/es6/" target="_blank">http://kangax.github.io/compat-table/es6/</a></li>
-</ul>
+<p><a href="http://kangax.github.io/compat-table/es6/" target="_blank">http://kangax.github.io/compat-table/es6/</a></p>
 <p><img src="./imgs/babel2.png" height="300" /></p>
 </section>
 
 
 
-<section data-transition="slide" data-background-transition="zoom">
+<section data-transition="convex"  data-background-transition="zoom">
 <h2>IE7, IE8을 위한 Babel.js의 pollyfill</h2>
 
-<ul>
-	<li><a href="https://babeljs.io/docs/usage/polyfill/">https://babeljs.io/docs/usage/polyfill/</a></li>
-</ul>
+<p><a href="https://babeljs.io/docs/usage/polyfill/">https://babeljs.io/docs/usage/polyfill/</a></p>
 
 <pre><code class="hljs" data-trim contenteditable>
 require("babel/polyfill");
 </code></pre>
 
 <pre><code class="hljs" data-trim contenteditable>
-<script src="browser-polyfill.js"></script>
+<script src="browser-polyfill.min.js"></script>
 </code></pre>
 </section>
 
-
-<section data-transition="slide" data-background-transition="zoom">
+<!--section data-transition="convex"  data-background-transition="zoom">
 <h2>Webpack은?</h2>
 <ul>
 	<li>module bundler</li>
@@ -747,29 +835,38 @@ require("babel/polyfill");
 
 <pre><code class="hljs" data-trim contenteditable>
 // dependencies can be written in CommonJs
-var commonjs = require("./commonjs");
+var angular = require( 'angular' );
+require( 'ng-infinite-scroll' );
+
+var commonjs = require( './commonjs' );
 
 // or in AMD
-define(["amd-module", "../file"], function(amdModule, file) {
+define(['amd-module', '../file'], function(amdModule, file) {
 	...
 }
 </code></pre>
+</section-->
+
+<section data-transition="convex"  data-background-transition="zoom">
+<h2>Webpack, browserify + babel</h2>
+<p class="point">module bundler + babel</p>
+<p class="la">+ node modules</p>
+<p class="la">+ concat</p>
+<p class="la">+ uglify</p>
+<p class="la">+ TDD, BDD</p>
+<p class="la">+ js libs</p>
+<p class="la">+ local server</p>
 </section>
 
 
-
-
-<section data-transition="slide" data-background-transition="zoom">
+<!--section data-transition="convex"  data-background-transition="zoom">
 <h2>Webpack 설치</h2>
 <pre><code class="hljs" data-trim contenteditable>
 $ npm install webpack -g
 </code></pre>
 </section>
 
-
-
-
-<section data-transition="slide" data-background-transition="zoom">
+<section data-transition="convex"  data-background-transition="zoom">
 <h2>Webpack 설정 및 실행</h2>
 
 <pre><code class="hljs" data-trim contenteditable>
@@ -798,10 +895,7 @@ $ webpack
 </section>
 
 
-
-
-
-<section data-transition="slide" data-background-transition="zoom">
+<section data-transition="convex"  data-background-transition="zoom">
 <h2>browserify는?</h2>
 <ul>
 	<li>module bundler</li>
@@ -822,7 +916,7 @@ $( 'a' ).on( 'click', ( evt ) =>{
 </section>
 
 
-<section data-transition="slide"  data-background-transition="zoom">
+<section data-transition="convex"   data-background-transition="zoom">
 <h2>browserify 실행</h2>
 <pre><code class="hljs" data-trim contenteditable>
 $ browserify main.js -o bundle.js
@@ -831,7 +925,7 @@ $ browserify main.js -o bundle.js
 
 
 
-<section data-transition="slide" data-background-transition="zoom">
+<section data-transition="convex"  data-background-transition="zoom">
 <h2>gulp와의 조합</h2>
 <p><a href="http://gulpjs.com/" target="_blank">http://gulpjs.com/</a></p>
 <pre><code class="hljs" data-trim contenteditable>
@@ -840,7 +934,7 @@ $ npm install --global gulp
 </section>
 
 
-<section data-transition="slide" data-background-transition="zoom">
+<section data-transition="convex"  data-background-transition="zoom">
 <h2>gulp + browserify</h2>
 <pre><code class="hljs" data-trim contenteditable>
 //gulpfile.js
@@ -874,7 +968,7 @@ gulp.task('default', ['watch']);
 </code></pre>
 </section>
 
-<section data-transition="slide" data-background-transition="zoom">
+<section data-transition="convex"  data-background-transition="zoom">
 <h2>gulp + browserify 실행</h2>
 <pre><code class="hljs" data-trim contenteditable>
 $ gulp
@@ -882,7 +976,7 @@ $ gulp
 </section>
 
 
-<section data-transition="slide" data-background-transition="zoom">
+<section data-transition="convex"  data-background-transition="zoom">
 <h2>gulp + webpack 설정</h2>
 <pre><code class="hljs" data-trim contenteditable>
 //gulpfile.js
@@ -915,21 +1009,31 @@ gulp.task('default', ['webpack']);
 </section>
 
 
-<section data-transition="slide" data-background-transition="zoom">
+<section data-transition="convex"  data-background-transition="zoom">
 <h2>gulp + webpack 실행</h2>
 <pre><code class="hljs" data-trim contenteditable>
 $ gulp
 </code></pre>
+</section-->
+
+<section data-transition="convex"   data-background-transition="zoom">
+<h2>단점</h2>
 </section>
 
+<section data-transition="convex"   data-background-transition="zoom">
+<h2>ES6의 동향</h2>
+<p class="la">IE, chrome, ff, safari, opera</p>
+<p class="la">angular.js, react.js, polymer.js, ember.js</p>
+<p class="la">Git</p>
+<p class="la">Node.js / Io.js</p>
+</section>
 
-
-<section data-transition="slide"  data-background-transition="zoom">
+<section data-transition="convex"   data-background-transition="zoom">
 <h2>QnA</h2>
 </section>
 
-<section data-transition="slide" data-background-transition="zoom">
-<h2>감사합니다.</h2>
+<section data-transition="convex"  data-background-transition="zoom">
+<h2>고맙습니다.</h2>
 </section>
 
 			</div>
